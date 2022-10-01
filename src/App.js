@@ -31,7 +31,7 @@ const App = () => {
         }}>
         Add to storage
       </button>
-      <Overview textArr={textStorage} />
+      <Overview textArr={textStorage} arrSize = {textStorage.length} />
     </div>
   );
 };
