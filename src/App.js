@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Overview from "./Overview";
+import uniqid from "uniqid";
 
-function App() {
+const App = () => {
+  const [text, setText] = useState({id: uniqid(), data: '' });
+
+  const [textStorage, setTextStorage] = useState([]);
+
+  // useEffect(() => {
+  //   setTextStorage([...textStorage, text])
+  // }, [text]);
+
+  // console.log(textStorage)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <form>
+        <label for="textinput">Text input: </label>
+        <input
+          type="text"
+          id="tinput"
+          name="textinput"
+          onChange={(e) => setText({...text, data: e.target.value})}
+        />
+      </form>
+      <button onClick={() => {
+        setTextStorage([...textStorage, text])
+        setText({...text, id: uniqid()})
+        }}>
+        Add to storage
+      </button>
+      <Overview textArr={textStorage} />
     </div>
   );
-}
+};
 
 export default App;
