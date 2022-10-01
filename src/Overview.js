@@ -9,10 +9,10 @@ const Overview = (props) => {
     element.remove();
   };
 
-  const removeElementFromArray = (arrLength) => {
-    let filteredArr = props.textArr.filter(item => item !== props.textArr[arrLength-1]);
-    return filteredArr;
-  }
+//   const removeElementFromArray = (arrLength) => {
+//     let filteredArr = props.textArr.filter(item => item !== props.textArr[arrLength-1]);
+//     return filteredArr;
+//   }
 
   return (
     <ul>
@@ -24,7 +24,6 @@ const Overview = (props) => {
             <button
               onClick={() => {
                 removeElementFromDom(item.id);
-                console.log(removeElementFromArray(props.arrSize));
               }}
             >
               Delete
