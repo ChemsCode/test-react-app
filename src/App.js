@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Overview from "./Overview";
+import uniqid from "uniqid"
 
 const App = () => {
-  const [text, setText] = useState({taskOrder: 1, data: '' });
+  const [text, setText] = useState({id:uniqid(),taskOrder: 1, data: '' });
 
   const [textStorage, setTextStorage] = useState([]);
 
@@ -26,7 +27,7 @@ const App = () => {
       <button onClick={() => {
         setTextStorage([...textStorage, text])
         setText(prevState => {
-          return {...text, taskOrder: prevState.taskOrder + 1}
+          return {...text,id: uniqid(), taskOrder: prevState.taskOrder + 1}
         })
         }}>
         Add to storage
