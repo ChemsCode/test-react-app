@@ -7,7 +7,7 @@ const Overview = (props) => {
   return (
     <ul>
       {props.textArr.map(item => {
-        return <li key={uniqid()} >id:{item.id}<br/>data:{item.data}</li>;
+        return <li key={uniqid()} >{item.taskOrder}. data:{item.data}</li>;
       })}
     </ul>
   );
