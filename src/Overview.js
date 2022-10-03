@@ -1,4 +1,5 @@
 import React from "react";
+import EditBar from "./EditBar";
 
 const Overview = ({textArr, setTextStorage, setText, text}) => {
   //   const textArr = { props };
@@ -12,6 +13,8 @@ const Overview = ({textArr, setTextStorage, setText, text}) => {
   const editElement = (id, newValue) => {
     setTextStorage(prev => prev.map(item => item.id === id? newValue: item));
   }
+  
+  
 
 
   return (
@@ -28,13 +31,7 @@ const Overview = ({textArr, setTextStorage, setText, text}) => {
             >
               Delete
             </button>
-            <button
-              onClick={() => {
-                editElement(item.id, {id: item.id, taskOrder: 1, data:"test"});
-              }}
-            >
-              Edit
-            </button>
+            <EditBar editElement={editElement} itemId={item.id}/>
           </li>
         );
       })}
