@@ -7,11 +7,6 @@ const App = () => {
 
   const [textStorage, setTextStorage] = useState([]);
 
-  // useEffect(() => {
-  //   setTextStorage([...textStorage, text])
-  // }, [text]);
-
-  // console.log(textStorage)
 
   return (
     <div>
@@ -26,13 +21,14 @@ const App = () => {
       </form>
       <button onClick={() => {
         setTextStorage([...textStorage, text])
-        setText(prevState => {
+        setText((prevState )=> {
           return {...text,id: uniqid(), taskOrder: prevState.taskOrder + 1}
         })
         }}>
         Add to storage
       </button>
-      <Overview textArr={textStorage} arrSize = {textStorage.length} />
+      <Overview textArr={textStorage} setTextStorage={setTextStorage} 
+      setText={setText} text={text}/>
     </div>
   );
 };

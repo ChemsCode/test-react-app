@@ -1,32 +1,39 @@
 import React from "react";
 
-const Overview = (props) => {
+const Overview = ({textArr, setTextStorage, setText, text}) => {
   //   const textArr = { props };
 
-  const removeElementFromDom = (id) => {
-    const element = document.getElementById(id);
-    console.log(element);
-    element.remove();
-  };
+  const removeElement = (id) => {
+    let filteredArr = textArr.filter(item => item.id !== id);
+    console.log(filteredArr);
+    setTextStorage(filteredArr);
+  }
 
-//   const removeElementFromArray = (arrLength) => {
-//     let filteredArr = props.textArr.filter(item => item !== props.textArr[arrLength-1]);
-//     return filteredArr;
-//   }
+  const editElement = (id, newValue) => {
+    setTextStorage(prev => prev.map(item => item.id === id? newValue: item));
+  }
+
 
   return (
     <ul>
-      {props.textArr.map((item) => {
+      {textArr.map((item) => {
         return (
           <li key={item.id} id={item.id}>
             id:{item.id} <br />
             {item.taskOrder}. data:{item.data}
             <button
               onClick={() => {
-                removeElementFromDom(item.id);
+                removeElement(item.id);
               }}
             >
               Delete
+            </button>
+            <button
+              onClick={() => {
+                editElement(item.id, {id: item.id, taskOrder: 1, data:"test"});
+              }}
+            >
+              Edit
             </button>
           </li>
         );
